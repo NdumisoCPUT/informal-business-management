@@ -17,14 +17,15 @@ Informal businesses struggle with manual inventory tracking, financial record-ke
 The system consists of a mobile application that enables business owners to manage their inventory, track sales, and engage with customers. The system interacts with external services for cloud storage, messaging, and authentication.
 
 ```mermaid
-C4Context
-    Person(businessOwner, "Business Owner", "Manages inventory, sales, and customer interactions")
-    System(mobileApp, "Informal Business Management App", "Provides digital business tools")
-    System_Ext(firebaseDB, "Firebase Database", "Stores inventory, sales, and customer data")
-    System_Ext(whatsappAPI, "WhatsApp API", "Sends customer messages")
-    System_Ext(firebaseAuth, "Firebase Auth", "Handles authentication")
+graph TD
+    businessOwner["Business Owner"]
+    mobileApp["Informal Business Management App"]
+    firebaseDB["Firebase Database"]
+    whatsappAPI["WhatsApp API"]
+    firebaseAuth["Firebase Auth"]
 
-    businessOwner -> mobileApp: Uses
-    mobileApp -> firebaseDB: Stores/Retrieves data
-    mobileApp -> whatsappAPI: Sends promotions
-    mobileApp -> firebaseAuth: Authenticates users
+    businessOwner -->|Uses| mobileApp
+    mobileApp -->|Stores/Retrieves Data| firebaseDB
+    mobileApp -->|Sends Promotions| whatsappAPI
+    mobileApp -->|Authenticates Users| firebaseAuth
+
