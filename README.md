@@ -4,3 +4,6 @@ A mobile-first application that helps informal SMEs manage inventory, track cash
 ## System Documentation
 - [System Specification](SPECIFICATION.md)
 - [Architecture & C4 Diagrams](ARCHITECTURE.md)
+- [Stakeholder Analysis](STAKEHOLDERS.md)
+- [System Requirements](SYSTEM_REQUIREMENTS.md)
+- [Reflection](REFLECTION.md)
