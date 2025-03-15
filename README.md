@@ -7,3 +7,4 @@ A mobile-first application that helps informal SMEs manage inventory, track cash
 - [Stakeholder Analysis](STAKEHOLDERS.md)
 - [System Requirements](SYSTEM_REQUIREMENTS.md)
 - [Reflection](REFLECTION.md)
+- [USE_CASE_DIAGRAM](USE_CASE_DIAGRAM.md)
