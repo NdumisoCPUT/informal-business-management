@@ -11,12 +11,12 @@ graph TD;
   %% Define Use Cases
   ManageInventory["Manage Inventory"]
   TrackSales["Track Sales"]
+  GenerateReport["Generate Sales Report"]
   MakePurchase["Make Purchase"]
   ReceivePromotions["Receive Promotions"]
-  GenerateReport["Generate Sales Report"]
+  ManageSettings["Manage System Settings"]
   SyncCloud["Sync Data with Cloud"]
   ProcessPayment["Process Payment"]
-  ManageSettings["Manage System Settings"]
 
   %% Define Relationships
   BusinessOwner -- Uses --> ManageInventory
@@ -24,7 +24,14 @@ graph TD;
   BusinessOwner -- Generates --> GenerateReport
   Customer -- Uses --> MakePurchase
   Customer -- Receives --> ReceivePromotions
+  Admin -- Manages --> ManageSettings
   System -- Syncs --> SyncCloud
   MobileApp -- Integrates --> ProcessPayment
   PaymentGateway -- Processes --> ProcessPayment
-  Admin -- Manages --> ManageSettings
+
+  %% Organizing Layout
+  classDef actor fill:#f9f,stroke:#333,stroke-width:2px;
+  classDef usecase fill:#ccf,stroke:#333,stroke-width:2px;
+  
+  class BusinessOwner,Customer,Admin,System,MobileApp,PaymentGateway actor;
+  class ManageInventory,TrackSales,GenerateReport,MakePurchase,ReceivePromotions,ManageSettings,SyncCloud,ProcessPayment usecase;
