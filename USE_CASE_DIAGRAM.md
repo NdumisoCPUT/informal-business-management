@@ -1,3 +1,4 @@
+```mermaid
 graph TD;
   %% Define Actors
   BusinessOwner["Business Owner"]
