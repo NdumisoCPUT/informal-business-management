@@ -9,5 +9,7 @@ A mobile-first application that helps informal SMEs manage inventory, track cash
 - [Reflection](REFLECTION.md)
 - [Use Case Diagram](Use_Case_Diagram.md)
 - [Use Case Specifications](Use_Case_Specifications.md)
+- [View the Wiki](https://github.com/NdumisoCPUT/informal-business-management/wiki)
+
 
 
