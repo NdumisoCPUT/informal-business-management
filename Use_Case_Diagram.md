@@ -1,39 +1,47 @@
-# Use Case Diagram
-%% Use Case Diagram for Informal Business Management App
-%% Mermaid doesn't fully support UML diagrams, but this approximates it using graph TD
-
 graph TD
-    subgraph "Informal Business Management App"
-        A1[User Login] --> A2[Authenticate User]
-        BO --> A1
-        BO --> A3[Manage Inventory]
-        BO --> A4[Generate Sales Report]
-        BO --> A5[Make Purchase]
-        BO --> A6[Track Sales]
+  %% Actors
+  BO([Business Owner])
+  C([Customer])
+  AD([Admin])
+  SYS([System])
+  MA([Mobile App])
+  PG([Payment Gateway])
 
-        C --> A5
-        C --> A7[Receive Promotions]
+  %% Use Cases
+  A1[User Login]
+  A2[Authenticate User]
+  A3[Manage Inventory]
+  A4[Generate Sales Report]
+  A5[Make Purchase]
+  A6[Track Sales]
+  A7[Receive Promotions]
+  A8[Manage System Settings]
+  A9[Sync Data with Cloud]
+  A10[Process Payment]
 
-        AD --> A8[Manage System Settings]
+  %% Relationships
+  A1 --> A2
+  BO --> A1
+  BO --> A3
+  BO --> A4
+  BO --> A5
+  BO --> A6
 
-        AD --> A9[Sync Data with Cloud]
-        A9 --> A4
-        A9 --> A3
+  C --> A5
+  C --> A7
 
-        A5 --> A10[Process Payment]
-        A10 --> PG
-        A10 --> MA
+  AD --> A8
+  AD --> A9
 
-        A1 --> SYS
-    end
+  A9 --> A4
+  A9 --> A3
 
-    %% Actors
-    BO([Business Owner])
-    C([Customer])
-    AD([Admin])
-    SYS([System])
-    MA([Mobile App])
-    PG([Payment Gateway])
+  A5 --> A10
+  A10 --> PG
+  A10 --> MA
+
+  A1 --> SYS
+
 
 
 # Actors And Their Roles
