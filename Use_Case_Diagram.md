@@ -1,5 +1,40 @@
 # Use Case Diagram
-<img width="415" alt="Informal Business Management App" src="https://github.com/user-attachments/assets/e3cdcd1e-89dd-45a4-b103-a56c6afc431f" />
+%% Use Case Diagram for Informal Business Management App
+%% Mermaid doesn't fully support UML diagrams, but this approximates it using graph TD
+
+graph TD
+    subgraph "Informal Business Management App"
+        A1[User Login] --> A2[Authenticate User]
+        BO --> A1
+        BO --> A3[Manage Inventory]
+        BO --> A4[Generate Sales Report]
+        BO --> A5[Make Purchase]
+        BO --> A6[Track Sales]
+
+        C --> A5
+        C --> A7[Receive Promotions]
+
+        AD --> A8[Manage System Settings]
+
+        AD --> A9[Sync Data with Cloud]
+        A9 --> A4
+        A9 --> A3
+
+        A5 --> A10[Process Payment]
+        A10 --> PG
+        A10 --> MA
+
+        A1 --> SYS
+    end
+
+    %% Actors
+    BO([Business Owner])
+    C([Customer])
+    AD([Admin])
+    SYS([System])
+    MA([Mobile App])
+    PG([Payment Gateway])
+
 
 # Actors And Their Roles
 <img width="296" alt="Actors and Their Roles" src="https://github.com/user-attachments/assets/9a832d95-2343-44b3-8ecc-72accb06ebb5" />
