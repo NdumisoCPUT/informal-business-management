@@ -1,13 +1,8 @@
 # Template Comparison for SME Digitalization Project
 
-| Template Name      | Columns/Workflow                           | Automation Features                              | Agile Suitability                                                           |
-|--------------------|---------------------------------------------|--------------------------------------------------|------------------------------------------------------------------------------|
-| **Basic Kanban**   | To Do, In Progress, Done                    | None                                             | Simple and clear, but lacks automation; okay for very small teams           |
-| **Automated Kanban**| Triage, Backlog, In Progress, Done         | Auto-move issues based on status updates         | Very Agile-friendly, great for continuous workflows and quicker updates     |
-| **Team Planning**  | Icebox, Backlog, Ready, In Progress, Review, Done | Iteration planning, auto-move, team assignment  | Best suited for structured Agile teams using sprints and regular planning   |
-
----
-
-## Justification
-
-For this SME Digitalization system, **Automated Kanban** is the best fit. It offers built-in automation to move issues based on status, making it easier to manage tasks like user login, inventory, and payments. Since the project is focused on Agile delivery and possibly a small team size, this template gives both flexibility and support for iterative delivery without overcomplicating things.
+| Template           | Columns/Workflow                                           | Automation Features                                                   | Agile Suitability                                                                 |
+|--------------------|------------------------------------------------------------|------------------------------------------------------------------------|------------------------------------------------------------------------------------|
+| Basic Kanban       | - To Do<br>- In Progress<br>- Done                         | No automation                                                           | Suitable for teams new to Agile or projects with low complexity. Manual task movement only. |
+| Automated Kanban   | - Triage<br>- Backlog<br>- In Progress<br>- Done           | - Auto-move issues based on status<br>- Auto-close completed items      | Ideal for fast-paced Agile workflows. Encourages continuous delivery and saves time with automation. |
+| Team Planning      | - Icebox<br>- Backlog<br>- Ready<br>- In Progress<br>- Review<br>- Done | - Supports sprints<br>- Auto-move<br>- Team assignment<br>- Built-in prioritization | Best for structured Agile teams using Scrum. Enables sprint planning, backlog grooming, and reviews. |
+| Bug Triage         | - New Issues<br>- Needs Triage<br>- In Progress<br>- Closed | - Auto-labeling<br>- Status triggers for priority management            | Best for QA or maintenance-focused teams. Not ideal for core feature-driven Agile development. |
