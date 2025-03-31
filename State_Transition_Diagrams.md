@@ -34,7 +34,28 @@ stateDiagram-v2
     Approved --> Archived : autoArchive  
     note right of Archived : [age > 30 days]
 
+```
+## Order
+```mermaid
+stateDiagram-v2
+    [*] --> Created : /startOrder
 
+    Created --> Confirmed : confirmOrder  
+    note right of Confirmed : [ payment selected]
 
+    Confirmed --> Paid : receivePayment  
+    note right of Paid : [ payment successful]
+
+    Paid --> Fulfilled : deliverItems  
+    note right of Fulfilled : [ all items delivered]
+
+    Created --> Canceled : cancelOrder  
+    note right of Canceled : [before confirmation]
+
+    Confirmed --> Canceled : cancelOrder  
+    note right of Canceled : [before payment]
+
+    Fulfilled --> [*]
+    Canceled --> [*]
 
 ```
