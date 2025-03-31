@@ -16,7 +16,7 @@ stateDiagram-v2
 
 
 ```
-| **Element**          | **Explanation**                                                                 |
+| Element      | Explanation                                                            |
 |----------------------|----------------------------------------------------------------------------------|
 | **Key States**       | InStock, LowStock, OutOfStock, Reordered                                        |
 | **Key Transitions**  | stockUpdate, placeRestock, receiveStock, manualCorrection                       |
