@@ -1,3 +1,4 @@
+```mermaid
 stateDiagram-v2
     [*] --> Initiated
     Initiated --> Processing : SubmitPayment
@@ -6,3 +7,4 @@ stateDiagram-v2
     Failed --> Retried : RetryPayment
     Retried --> Processing : SubmitPayment
     Successful --> [*]
+```
