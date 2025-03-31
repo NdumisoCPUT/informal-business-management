@@ -16,6 +16,14 @@ stateDiagram-v2
 
 
 ```
+| **Element**          | **Explanation**                                                                 |
+|----------------------|----------------------------------------------------------------------------------|
+| **Key States**       | `InStock`, `LowStock`, `OutOfStock`, `Reordered`                                |
+| **Key Transitions**  | `stockUpdate`, `placeRestock`, `receiveStock`, `manualCorrection`               |
+| **Guard Conditions** | `qty < threshold`, `qty == 0`, `qty restored`, `qty > 0`                         |
+| **Actions**          | `/initialSync`, `/logRequest`, `/updateQty`                                     |
+| **FR Mapping**       | `FR-002` (Inventory tracking), `FR-006` (Restock alerts), `FR-007` (Notifications) |
+
 ## CashFLowEntry
 ```mermaid
 stateDiagram-v2
