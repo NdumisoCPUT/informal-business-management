@@ -11,6 +11,7 @@ A mobile-first application that helps informal SMEs manage inventory, track cash
 - [Use Case Specifications](Use_Case_Specifications.md)
 - [User Stories](https://github.com/NdumisoCPUT/informal-business-management/wiki)
 - [template-comparison](template-comparison.md)
+-  [kanban_explanation](kanban_explanation.md)
 
 
 
