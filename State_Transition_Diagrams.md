@@ -20,9 +20,10 @@ stateDiagram-v2
 ```mermaid
 stateDiagram-v2
     [*] --> Draft : /addEntry
-    Draft --> PendingReview : submitEntry
-    PendingReview --> Approved : validateEntry [valid && confirmed]
-    PendingReview --> Rejected : validateEntry [invalid || duplicate]
-    Rejected --> Draft : editEntry /resubmit
-    Approved --> Archived : autoArchive [age > 30 days]
+    Draft --> PendingReview : submit
+    PendingReview --> Approved : validate [valid & confirmed]
+    PendingReview --> Rejected : validate [invalid or duplicate]
+    Rejected --> Draft : edit /resubmit
+    Approved --> Archived : autoArchive [>30 days]
+
 ```
