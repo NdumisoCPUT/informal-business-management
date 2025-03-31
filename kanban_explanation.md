@@ -1,5 +1,5 @@
 # Custom Kanban board.
-![Picture3](https://github.com/user-attachments/assets/6971b85d-f2e1-43f8-9d11-9b6b9bc05325)
+
 
 # Kanban Board Explanation
 ## What is a Kanban Board?
