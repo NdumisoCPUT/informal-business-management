@@ -1,22 +1,13 @@
-# Template Comparison for SME Digitalization Project
-
-| Template           | Columns/Workflow                                           | Automation Features                                                   | Agile Suitability                                                                 |
-|--------------------|------------------------------------------------------------|------------------------------------------------------------------------|------------------------------------------------------------------------------------|
-| Basic Kanban       | - To Do<br>- In Progress<br>- Done                         | No automation                                                           | Suitable for teams new to Agile or projects with low complexity. Manual task movement only. |
-| Automated Kanban   | - Triage<br>- Backlog<br>- In Progress<br>- Done           | - Auto-move issues based on status<br>- Auto-close completed items      | Ideal for fast-paced Agile workflows. Encourages continuous delivery and saves time with automation. |
-| Team Planning      | - Icebox<br>- Backlog<br>- Ready<br>- In Progress<br>- Review<br>- Done | - Supports sprints<br>- Auto-move<br>- Team assignment<br>- Built-in prioritization | Best for structured Agile teams using Scrum. Enables sprint planning, backlog grooming, and reviews. |
-| Bug Triage         | - New Issues<br>- Needs Triage<br>- In Progress<br>- Closed | - Auto-labeling<br>- Status triggers for priority management            | Best for QA or maintenance-focused teams. Not ideal for core feature-driven Agile development. |
-
-# Justification
-For the SME Digitalization Project, the Automated Kanban template was selected as the most suitable option. This choice was based on three main factors: workflow clarity, built-in automation, and Agile compatibility.
-
-Firstly, its columns — Triage, Backlog, In Progress, Done — reflect a natural development process. This structure makes it easy to follow work items as they move from planning to completion, which is ideal for features like user login, inventory management, and payment processing.
-
-Secondly, its automation features reduce manual updates by automatically moving issues based on their status and closing completed ones. This keeps the board up to date and reduces human error, which is especially helpful for smaller teams with limited project management capacity.
-
-Finally, this template supports an Agile way of working without overcomplicating the process. Compared to the Team Planning template, which is better suited for larger teams running formal sprints, the Automated Kanban provides flexibility for iterative development. It also avoids the overhead of templates like Bug Triage, which are more appropriate for maintenance tasks.
-
-In summary, Automated Kanban strikes the best balance for this project: simple yet effective workflows, useful automation, and strong Agile alignment — all of which support the goal of delivering working software quickly and consistently.
+| Template Name           | Purpose / Use Case                                                               | Workflow Style         | Best For                               | Complexity | WIP Limiting |
+|------------------------|-----------------------------------------------------------------------------------|------------------------|----------------------------------------|------------|--------------|
+| **Kanban**             | Visualize work status and limit WIP                                              | Column-based           | Agile teams, continuous delivery       | Simple     |  Yes        |
+| **Team Planning**      | Manage work items, plan cycles, view team capacity                               | Iteration + Capacity   | Scrum teams, planning sessions         | Moderate   | No         |
+| **Feature Release**    | Organize and prioritize features before a release                                | Checklist-style        | Product teams, release prep            | Moderate   |  No         |
+| **Bug Tracker**        | Track and resolve bugs and issues                                                 | Bug-focused            | QA/Test teams                          | Simple     |  No         |
+| **Iterative Development** | Plan current/future iterations, prioritize backlog                          | Sprint-focused columns | Agile/Scrum teams                      | Moderate   |  Partial    |
+| **Product Launch**     | Coordinate work across teams for a launch                                        | Milestone-driven       | Marketing + Dev teams                  | Complex    |  No         |
+| **Roadmap**            | Plan and visualize long-term goals and deliverables                              | Timeline-based         | Strategic planning                     | Complex    |  No         |
+| **Team Retrospective** | Reflect on what went well and what can be improved post-sprint                   | Feedback columns       | Agile retrospectives                   | Simple     | No         |
 
 
 
