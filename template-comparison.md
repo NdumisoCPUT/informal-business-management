@@ -1,3 +1,5 @@
+# Project Template Comparison
+
 | Template Name           | Purpose / Use Case                                                               | Workflow Style         | Best For                               | Complexity | WIP Limiting |
 |------------------------|-----------------------------------------------------------------------------------|------------------------|----------------------------------------|------------|--------------|
 | **Kanban**             | Visualize work status and limit WIP                                              | Column-based           | Agile teams, continuous delivery       | Simple     |  Yes        |
