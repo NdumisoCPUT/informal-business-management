@@ -131,19 +131,19 @@ stateDiagram-v2
     [*] --> New : /createProfile
 
     New --> Active : firstPurchase  
-    note right of Active : [✓ initial transaction completed]
+    note right of Active : [initial transaction completed]
 
     Active --> Loyal : checkLoyalty  
-    note right of Loyal : [✓ purchases ≥ 10]
+    note right of Loyal : [purchases ≥ 10]
 
     Active --> Dormant : checkInactivity  
-    note right of Dormant : [✗ no activity > 30 days]
+    note right of Dormant : [no activity > 30 days]
 
     Dormant --> Active : newPurchase  
-    note right of Active : [✓ user returned]
+    note right of Active : [user returned]
 
     Active --> Blocked : flagAbuse  
-    note right of Blocked : [✗ fraud detected]
+    note right of Blocked : [fraud detected]
 
     Blocked --> [*]
 
