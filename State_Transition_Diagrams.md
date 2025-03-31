@@ -22,11 +22,18 @@ stateDiagram-v2
     [*] --> Draft : /addEntry
 
     Draft --> PendingReview : submit
-    PendingReview --> Approved : validate [✓ valid & confirmed]
-    PendingReview --> Rejected : validate [✗ invalid or duplicate]
+
+    PendingReview --> Approved : validate  
+    note right of Approved : [✓ valid & confirmed]
+
+    PendingReview --> Rejected : validate  
+    note right of Rejected : [✗ invalid or duplicate]
 
     Rejected --> Draft : edit /resubmit
-    Approved --> Archived : autoArchive [age > 30 days]
+
+    Approved --> Archived : autoArchive  
+    note right of Archived : [age > 30 days]
+
 
 
 
