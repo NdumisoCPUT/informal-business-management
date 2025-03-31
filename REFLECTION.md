@@ -24,3 +24,26 @@ Aligning Agile practices with my work also came with challenges. In Agile, you o
 One more difficulty was choosing what to work on first. Agile recommends selecting 4–6 user stories per sprint, so I had to pick from my backlog carefully. I chose the most connected and high-priority ones, like login, inventory, and payment. But it wasn’t always clear which tasks had dependencies, so I had to look back at my use case diagram and backlog table to decide.
 
 In the end, this part of the project helped me understand the real-world problems of project planning. Prioritization, estimation, and planning sprints take practice. This assignment made me realize that Agile is flexible, but it still needs structure and clear thinking to make good progress.
+
+
+# Challenges in Selecting and Customizing the Template
+Initially, selecting a GitHub template felt overwhelming due to the variety available—each designed for a different workflow. The real challenge was identifying which one best aligned with our Agile team's needs without overcomplicating things. Templates like Team Planning and Iterative Development seemed powerful but came with layers of setup not immediately necessary for our project scope.
+
+I chose the Kanban template because of its simplicity and its alignment with Agile principles like visual task tracking, limiting WIP, and encouraging continuous delivery. However, after choosing it, I quickly realized that customization was not as straightforward as Trello’s drag-and-drop editing. Adjusting columns, adding WIP limits, and linking existing GitHub Issues to the board required going beyond the UI and understanding GitHub’s project configuration settings. There was a learning curve in figuring out how to assign Issues correctly, update their statuses, and make sure they reflected on the board.
+
+Another pain point was maintaining consistency across two boards (the original and the newly created Kanban board). Ensuring that the tasks from Assignment 6 were accurately migrated and linked to the board—not recreated—required trial and error. Assigning tasks using the @mention system was helpful, but only once I understood that assignees had to have access to the repo or board.
+
+# Comparison: GitHub Kanban vs Trello vs Jira
+In comparing GitHub to Trello and Jira, I found GitHub’s integration with code repositories to be its biggest strength. Being able to connect Issues, commits, pull requests, and project tracking in one ecosystem is invaluable for developers. However, it lacks the out-of-the-box clarity that tools like Trello provide.
+
+Trello shines in ease of use and intuitive UI, making it ideal for non-technical teams or rapid brainstorming sessions. But it lacks tight integration with code or automated workflows unless you use external power-ups. On the other hand, Jira offers advanced customization, robust reporting tools, sprint planning features, and integrates well with large team operations—but comes with a steep learning curve and can be overwhelming for smaller teams or academic projects.
+
+## Table 
+| Feature             | GitHub (Kanban)                         | Trello                              | Jira                                |
+|---------------------|------------------------------------------|--------------------------------------|-------------------------------------|
+| Visual Workflow     | Visual columns and progress tracking     | Easy drag-and-drop boards            | Custom workflows per team           |
+| Ease of Use         | Moderate (needs GitHub familiarity)      | Very beginner-friendly               | Complex, requires onboarding        |
+| Code Integration    | Native GitHub Issue and PR integration   | Requires plugins                     | Strong (especially with Bitbucket)  |
+| WIP Management      | Manual via columns and discipline        | No real WIP limit                    | Supports WIP rules and metrics      |
+| Automation          | GitHub Actions and bots (not intuitive)  | Butler (limited but simple)          | Built-in advanced rules/triggers    |
+| Team Assignment     | Uses @mentions and assignees             | Labels and checklists                | Role assignments, priorities        |
