@@ -24,10 +24,10 @@ stateDiagram-v2
     Draft --> PendingReview : submit
 
     PendingReview --> Approved : validate  
-    note right of Approved : [ valid & confirmed]
+    note right of Approved : [valid & confirmed]
 
     PendingReview --> Rejected : validate  
-    note right of Rejected : [ invalid or duplicate]
+    note right of Rejected : [invalid or duplicate]
 
     Rejected --> Draft : edit /resubmit
 
@@ -41,13 +41,13 @@ stateDiagram-v2
     [*] --> Created : /startOrder
 
     Created --> Confirmed : confirmOrder  
-    note right of Confirmed : [ payment selected]
+    note right of Confirmed : [payment selected]
 
     Confirmed --> Paid : receivePayment  
-    note right of Paid : [ payment successful]
+    note right of Paid : [payment successful]
 
     Paid --> Fulfilled : deliverItems  
-    note right of Fulfilled : [ all items delivered]
+    note right of Fulfilled : [all items delivered]
 
     Created --> Canceled : cancelOrder  
     note right of Canceled : [before confirmation]
@@ -67,10 +67,10 @@ stateDiagram-v2
     Initiated --> Processing : submitPayment
 
     Processing --> Successful : validatePayment  
-    note right of Successful : [ payment valid]
+    note right of Successful : [payment valid]
 
     Processing --> Failed : validatePayment  
-    note right of Failed : [ payment invalid]
+    note right of Failed : [payment invalid]
 
     Failed --> Retried : retryPayment
 
@@ -80,3 +80,28 @@ stateDiagram-v2
 
 
 ```
+
+## UserAccount
+```mermaid
+stateDiagram-v2
+    [*] --> Registered : /createAccount
+
+    Registered --> EmailVerified : verifyEmail  
+    note right of EmailVerified : [verification link clicked]
+
+    EmailVerified --> Active : completeProfile  
+    note right of Active : [profile info completed]
+
+    Active --> Suspended : flagViolation  
+    note right of Suspended : [user broke policy]
+
+    Suspended --> Active : reinstateAccount  
+    note right of Active : [admin approval]
+
+    Active --> Deactivated : requestDeletion  
+    Suspended --> Deactivated : adminDelete
+
+    Deactivated --> [*]
+
+```
+
