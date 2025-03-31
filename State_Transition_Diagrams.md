@@ -19,11 +19,13 @@ stateDiagram-v2
 ## CashFLowEntry
 ```mermaid
 stateDiagram-v2
-    [*] --> Draft : /addEntry
-    Draft --> PendingReview : submit
-    PendingReview --> Approved : validate [valid & confirmed]
-    PendingReview --> Rejected : validate [invalid or duplicate]
-    Rejected --> Draft : edit /resubmit
-    Approved --> Archived : autoArchive [>30 days]
+    [*] --> Listed : /startBidTimer
+    Listed --> Active : bid [acceptable]
+    Active --> Sold : bidTimerExpired /notifyBuyer, notifySeller
+    Listed --> Ignored : bidTimerExpired /startDeleteTimer
+    Ignored --> Listed : relist /startBidTimer
+    Ignored --> [*] : deleteTimerExpired /deleteItem
+    Sold --> [*] : deleteTimerExpired /deleteItem
+
 
 ```
