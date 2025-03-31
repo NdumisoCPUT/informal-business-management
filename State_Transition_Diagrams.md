@@ -59,3 +59,24 @@ stateDiagram-v2
     Canceled --> [*]
 
 ```
+## Payment
+```mermaid
+stateDiagram-v2
+    [*] --> Initiated : /startPayment
+
+    Initiated --> Processing : submitPayment
+
+    Processing --> Successful : validatePayment  
+    note right of Successful : [ payment valid]
+
+    Processing --> Failed : validatePayment  
+    note right of Failed : [ payment invalid]
+
+    Failed --> Retried : retryPayment
+
+    Retried --> Processing : submitPayment
+
+    Successful --> [*]
+
+
+```
