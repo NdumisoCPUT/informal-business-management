@@ -104,4 +104,24 @@ stateDiagram-v2
     Deactivated --> [*]
 
 ```
+## Promotion
+```mermaid
+stateDiagram-v2
+    [*] --> Draft : /createPromotion
 
+    Draft --> Scheduled : schedulePromotion  
+    note right of Scheduled : [start & end date set]
+
+    Scheduled --> Active : activatePromotion  
+    note right of Active : [current date = start date]
+
+    Active --> Expired : expirePromotion  
+    note right of Expired : [current date > end date]
+
+    Active --> Canceled : cancelPromotion  
+    note right of Canceled : [manually canceled]
+
+    Expired --> [*]
+    Canceled --> [*]
+
+```
