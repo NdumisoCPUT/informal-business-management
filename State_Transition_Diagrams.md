@@ -24,10 +24,10 @@ stateDiagram-v2
     Draft --> PendingReview : submit
 
     PendingReview --> Approved : validate  
-    note right of Approved : [✓ valid & confirmed]
+    note right of Approved : [ valid & confirmed]
 
     PendingReview --> Rejected : validate  
-    note right of Rejected : [✗ invalid or duplicate]
+    note right of Rejected : [ invalid or duplicate]
 
     Rejected --> Draft : edit /resubmit
 
