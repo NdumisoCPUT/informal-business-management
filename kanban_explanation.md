@@ -1,3 +1,6 @@
+# Custom Kanban board.
+![Picture3](https://github.com/user-attachments/assets/6971b85d-f2e1-43f8-9d11-9b6b9bc05325)
+
 # Kanban Board Explanation
 ## What is a Kanban Board?
 A Kanban board is a simple visual tool that helps manage tasks by showing what needs to be done, what’s being worked on, and what’s already completed. It uses columns to represent the different stages a task goes through. This makes it easy for anyone in the team to quickly see where things stand.
