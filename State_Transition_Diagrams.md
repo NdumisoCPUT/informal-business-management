@@ -44,6 +44,14 @@ stateDiagram-v2
     note right of Archived : [age > 30 days]
 
 ```
+| **Element**          | **Explanation**                                                                 |
+|----------------------|----------------------------------------------------------------------------------|
+| **Key States**       | Draft, PendingReview, Approved, Rejected, Archived                              |
+| **Key Transitions**  | submit, validate, edit, autoArchive                                              |
+| **Guard Conditions** | valid & confirmed, invalid or duplicate, age > 30 days                           |
+| **Actions**          | /addEntry, /resubmit                                                             |
+| **FR Mapping**       | FR-003 (Track income/expenses), FR-004 (Reject invalid entries), FR-006 (Archive for reporting/loans) |
+
 ## Order
 ```mermaid
 stateDiagram-v2
@@ -68,6 +76,14 @@ stateDiagram-v2
     Canceled --> [*]
 
 ```
+| **Element**          | **Explanation**                                                                 |
+|----------------------|----------------------------------------------------------------------------------|
+| **Key States**       | Created, Confirmed, Paid, Fulfilled, Canceled                                   |
+| **Key Transitions**  | confirmOrder, receivePayment, deliverItems, cancelOrder                         |
+| **Guard Conditions** | payment selected, payment successful, before confirmation, before payment        |
+| **Actions**          | /startOrder                                                                      |
+| **FR Mapping**       | FR-003 (Order lifecycle), FR-005 (Cancel orders before payment), FR-006 (Delivery tracking) |
+
 ## Payment
 ```mermaid
 stateDiagram-v2
@@ -89,6 +105,13 @@ stateDiagram-v2
 
 
 ```
+| **Element**          | **Explanation**                                                                 |
+|----------------------|----------------------------------------------------------------------------------|
+| **Key States**       | Initiated, Processing, Successful, Failed, Retried                              |
+| **Key Transitions**  | submitPayment, validatePayment, retryPayment                                    |
+| **Guard Conditions** | payment valid, payment invalid                                                   |
+| **Actions**          | /startPayment                                                                    |
+| **FR Mapping**       | FR-004 (Validate payments), FR-006 (Retry failed transactions), FR-007 (Log payment attempts) |
 
 ## UserAccount
 ```mermaid
@@ -113,6 +136,14 @@ stateDiagram-v2
     Deactivated --> [*]
 
 ```
+| **Element**          | **Explanation**                                                                 |
+|----------------------|----------------------------------------------------------------------------------|
+| **Key States**       | Registered, EmailVerified, Active, Suspended, Deactivated                       |
+| **Key Transitions**  | verifyEmail, completeProfile, flagViolation, reinstateAccount, requestDeletion, adminDelete |
+| **Guard Conditions** | verification link clicked, profile info completed, policy violation, admin approval |
+| **Actions**          | /createAccount                                                                   |
+| **FR Mapping**       | FR-001 (User onboarding), FR-005 (Admin account control), FR-006 (Deactivation rights) |
+
 ## Promotion
 ```mermaid
 stateDiagram-v2
@@ -134,6 +165,14 @@ stateDiagram-v2
     Canceled --> [*]
 
 ```
+| **Element**          | **Explanation**                                                                 |
+|----------------------|----------------------------------------------------------------------------------|
+| **Key States**       | Draft, Scheduled, Active, Expired, Canceled                                     |
+| **Key Transitions**  | schedulePromotion, activatePromotion, expirePromotion, cancelPromotion          |
+| **Guard Conditions** | start & end date set, current date = start date, current date > end date, manually canceled |
+| **Actions**          | /createPromotion                                                                 |
+| **FR Mapping**       | FR-008 (Manage promotions), FR-007 (Campaign lifecycle), FR-006 (Expire/archive promos) |
+
 ## CustomerProfile
 ```mermaid
 stateDiagram-v2
@@ -157,5 +196,12 @@ stateDiagram-v2
     Blocked --> [*]
 
 ```
+| **Element**          | **Explanation**                                                                 |
+|----------------------|----------------------------------------------------------------------------------|
+| **Key States**       | New, Active, Loyal, Dormant, Blocked                                            |
+| **Key Transitions**  | firstPurchase, checkLoyalty, checkInactivity, newPurchase, flagAbuse           |
+| **Guard Conditions** | initial transaction completed, purchases ≥ 10, no activity > 30 days, fraud detected |
+| **Actions**          | /createProfile                                                                   |
+| **FR Mapping**       | FR-007 (Loyalty & engagement), FR-005 (Handle dormancy), FR-006 (Flag abuse)     |
 
 
