@@ -16,3 +16,13 @@ stateDiagram-v2
 
 
 ```
+## CashFLowEntry
+```mermaid
+stateDiagram-v2
+    [*] --> Draft : /addEntry
+    Draft --> PendingReview : submitEntry
+    PendingReview --> Approved : validateEntry [valid && confirmed]
+    PendingReview --> Rejected : validateEntry [invalid || duplicate]
+    Rejected --> Draft : editEntry /resubmit
+    Approved --> Archived : autoArchive [age > 30 days]
+```
