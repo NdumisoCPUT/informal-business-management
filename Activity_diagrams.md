@@ -1,3 +1,4 @@
+```mermaid
 %%{init: {'theme': 'default'}}%%
 flowchart TD
     subgraph User
@@ -16,3 +17,4 @@ flowchart TD
         B4 --> B5[Load dashboard & features]
         B5 --> A9
     end
+```
