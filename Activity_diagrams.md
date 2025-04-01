@@ -1,20 +1,22 @@
 ```mermaid
-%%{init: {'theme': 'default'}}%%
-flowchart TD
-    subgraph User
-        A1([Start]) --> A2[Enter username & password]
-        A2 --> A3{Is input valid?}
-        A3 -- No --> A4[Show error message]
-        A4 --> A9([End])
-    end
+stateDiagram-v2
+    [*] --> User_EnterCredentials : User enters username and password
+    User_EnterCredentials --> System_ValidateInput : System validates input
 
-    subgraph System
-        A3 -- Yes --> B1[Validate credentials]
-        B1 --> B2{Are credentials correct?}
-        B2 -- No --> B3[Return login error]
-        B3 --> A9
-        B2 -- Yes --> B4[Create session]
-        B4 --> B5[Load dashboard & features]
-        B5 --> A9
-    end
+    System_ValidateInput --> System_InvalidInput : [input is invalid]
+    System_InvalidInput --> [*]
+
+    System_ValidateInput --> System_CheckCredentials : [input is valid]
+    System_CheckCredentials --> System_LoginFailed : [credentials incorrect]
+    System_LoginFailed --> [*]
+
+    System_CheckCredentials --> System_CreateSession : [credentials correct]
+
+    fork System_ParallelActions
+        System_CreateSession --> System_LoadDashboard
+        System_CreateSession --> System_LogLoginTime
+    join System_AccessComplete
+
+    System_AccessComplete --> [*]
 ```
+
