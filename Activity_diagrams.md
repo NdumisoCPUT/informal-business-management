@@ -46,6 +46,10 @@ stateDiagram-v2
     User_EditDetails --> System_UpdateInventory : System saves changes
     System_UpdateInventory --> [*]
 ```
+**Stakeholder Concern:**  
+Triggers restock alerts when inventory is low.  
+Helps shop owners maintain stock levels and prevent sales loss.
+
 ## Make Purchase
 ```mermaid
 stateDiagram-v2
@@ -67,6 +71,10 @@ stateDiagram-v2
     System_UpdateInventory --> User_ShowConfirmation : Show success message
     User_ShowConfirmation --> [*]
 ```
+**Stakeholder Concern:**  
+Validates stock before purchase.  
+Parallel receipt generation and inventory update ensure smooth user experience and inventory accuracy.
+
 ## Process Payment
 ```mermaid
 stateDiagram-v2
@@ -88,6 +96,10 @@ stateDiagram-v2
 
     System_SendConfirmation --> [*]
 ```
+**Stakeholder Concern:**  
+Enables retries on payment failure.  
+Parallel actions improve UX by confirming order and notifying the user simultaneously.
+
 ## Send promotional message
 ```mermaid
 stateDiagram-v2
@@ -107,6 +119,10 @@ stateDiagram-v2
 
     User_ConfirmDelivery --> [*]
 ```
+**Stakeholder Concern:**  
+Allows direct outreach to customers.  
+Parallel logging and confirmation ensure compliance and feedback to user.
+
 ## Generate sales report
 ```mermaid
 stateDiagram-v2
@@ -126,6 +142,10 @@ stateDiagram-v2
 
     User_DisplayReport --> [*]
 ```
+**Stakeholder Concern:**  
+Efficiently compiles sales data for financial decisions.  
+Parallel save + display ensures records are kept while providing immediate access.
+
 ## Sync data with cloud
 ```mermaid
 stateDiagram-v2
@@ -146,6 +166,10 @@ stateDiagram-v2
 
     User_ShowSuccess --> [*]
 ```
+**Stakeholder Concern:**  
+Ensures resilience with connection checks.  
+Parallel actions maintain logs and notify users for transparency and traceability.
+
 ## Manage system settings
 ```mermaid
 stateDiagram-v2
@@ -166,4 +190,7 @@ stateDiagram-v2
 
     User_ConfirmUpdate --> [*]
 ```
+**Stakeholder Concern:**  
+Validates configuration changes to avoid system errors.  
+Logging and feedback provide accountability and user clarity.
 
