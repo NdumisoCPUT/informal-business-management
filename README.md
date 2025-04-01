@@ -47,7 +47,7 @@ These customizations help the team stay aligned on task status, identify delays 
 -  [traceability_table](traceability_table.md)
 -  [Activity_diagrams](Activity_diagrams.md)
 - [State_Transition_Diagrams](State_Transition_Diagrams.md)
-- [uml_modeling_reflection.md](uml_modeling_reflection.md.md)
+- [uml_modeling_reflection.md](uml_modeling_reflection.md)
 
 
 
