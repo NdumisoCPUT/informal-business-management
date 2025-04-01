@@ -46,7 +46,8 @@ These customizations help the team stay aligned on task status, identify delays 
 -  [kanban_explanation](kanban_explanation.md)
 -  [traceability_table](traceability_table.md)
 -  [Activity_diagrams](Activity_diagrams.md)
--  [State_Transition_Diagrams](State_Transition_Diagrams.md)
+- [State_Transition_Diagrams](State_Transition_Diagrams.md)
+- [uml_modeling_reflection.md](uml_modeling_reflection.md.md)
 
 
 
