@@ -1,18 +1,18 @@
 %%{init: {'theme': 'default'}}%%
 flowchart TD
     subgraph User
-        U1([Start]) --> U2[Enter username & password]
-        U2 --> U3{Is input valid?}
-        U3 -- No --> U4[Show error message]
-        U4 --> U9([End])
+        A1([Start]) --> A2[Enter username & password]
+        A2 --> A3{Is input valid?}
+        A3 -- No --> A4[Show error message]
+        A4 --> A9([End])
     end
 
     subgraph System
-        U3 -- Yes --> S1[Validate credentials]
-        S1 --> S2{Are credentials correct?}
-        S2 -- No --> S3[Return login error]
-        S3 --> U9
-        S2 -- Yes --> S4[Create session]
-        S4 --> S5[Load dashboard & features]
-        S5 --> U9
+        A3 -- Yes --> B1[Validate credentials]
+        B1 --> B2{Are credentials correct?}
+        B2 -- No --> B3[Return login error]
+        B3 --> A9
+        B2 -- Yes --> B4[Create session]
+        B4 --> B5[Load dashboard & features]
+        B5 --> A9
     end
