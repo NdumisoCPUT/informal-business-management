@@ -44,6 +44,7 @@ These customizations help the team stay aligned on task status, identify delays 
 - [User Stories](https://github.com/NdumisoCPUT/informal-business-management/wiki)
 - [template-comparison](template-comparison.md)
 -  [kanban_explanation](kanban_explanation.md)
+-  [traceability_table](traceability_table.md)
 
 
 
