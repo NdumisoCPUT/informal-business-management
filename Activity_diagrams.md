@@ -2,16 +2,14 @@
 flowchart TD
     subgraph User
         A1([Start]) --> A2[Enter username & password]
-        A3{Is input valid?}
-        A2 --> A3
+        A2 --> A3{Is input valid?}
         A3 -- No --> A4[Show error message]
         A4 --> A5([End])
     end
 
     subgraph System
         A3 -- Yes --> B1[Validate credentials]
-        B2{Are credentials correct?}
-        B1 --> B2
+        B1 --> B2{Are credentials correct?}
         B2 -- No --> B3[Return login error]
         B3 --> A5
         B2 -- Yes --> B4[Create session]
