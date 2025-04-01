@@ -45,6 +45,7 @@ These customizations help the team stay aligned on task status, identify delays 
 - [template-comparison](template-comparison.md)
 -  [kanban_explanation](kanban_explanation.md)
 -  [traceability_table](traceability_table.md)
+-  [activity_diagrams](activity_diagrams.md)
 
 
 
