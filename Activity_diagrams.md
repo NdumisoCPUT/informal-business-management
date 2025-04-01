@@ -1,22 +1,22 @@
 ```mermaid
 stateDiagram-v2
-    [*] --> User_EnterCredentials : User enters username and password
+    [*] --> User_EnterCredentials : User enters login details
     User_EnterCredentials --> System_ValidateInput : System validates input
 
-    System_ValidateInput --> System_InvalidInput : [input is invalid]
-    System_InvalidInput --> [*]
+    System_ValidateInput --> InputInvalid : [input is invalid]
+    InputInvalid --> [*]
 
     System_ValidateInput --> System_CheckCredentials : [input is valid]
-    System_CheckCredentials --> System_LoginFailed : [credentials incorrect]
-    System_LoginFailed --> [*]
+    System_CheckCredentials --> LoginFailed : [invalid credentials]
+    LoginFailed --> [*]
 
-    System_CheckCredentials --> System_CreateSession : [credentials correct]
+    System_CheckCredentials --> System_CreateSession : [valid credentials]
 
-    fork System_ParallelActions
+    fork after System_CreateSession
         System_CreateSession --> System_LoadDashboard
         System_CreateSession --> System_LogLoginTime
-    join System_AccessComplete
+    join after System_LogLoginTime
 
-    System_AccessComplete --> [*]
+    System_LogLoginTime --> [*]
 ```
 
