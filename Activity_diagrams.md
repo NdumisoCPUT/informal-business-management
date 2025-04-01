@@ -20,6 +20,9 @@ stateDiagram-v2
 
     System_LogLoginTime --> [*]
 ```
+**Stakeholder Concern:**  
+Validates user input and credentials with proper error handling.  
+Ensures secure access, reliability, and session control.
 ## Manage Inventory
 ```mermaid
 stateDiagram-v2
