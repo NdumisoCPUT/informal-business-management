@@ -50,15 +50,12 @@ Trello shines in ease of use and intuitive UI, making it ideal for non-technical
 
 ## Comparing State Diagrams vs. Activity Diagrams
 
-Working on both state and activity diagrams gave me a better understanding of their unique strengths. **State diagrams**, created using Mermaid’s `stateDiagram-v2` syntax, were ideal for modeling how a specific object behaves over time in response to internal events or external triggers. For example, the `CashFlowEntry` diagram showed how an entry transitions from `Draft` to `PendingReview`, and then to either `Approved`, `Rejected`, or `Archived`, depending on conditions like validity or time constraints.
+### 3. Comparing State Diagrams vs. Activity Diagrams
 
-The `stateDiagram-v2` format made it easier to include guard conditions (e.g., `[valid & confirmed]`), transitions, and start/end nodes in a way that aligns closely with UML standards, even though it lacked full support for swimlanes. These diagrams were most helpful when visualizing the lifecycle and state transitions of objects within the system.
+State diagrams helped me understand how individual objects behave across different stages in their lifecycle. For example, the `Order` object transitions from `Created` to `Confirmed`, `Paid`, and eventually `Fulfilled` or `Canceled`. These diagrams focus on object-specific behavior and event-triggered state changes.
 
-On the other hand, **activity diagrams** were designed using `stateDiagram-v2` as well, but with a different modeling focus: they captured complete workflows, often across multiple actors (e.g., users and the system). In these diagrams, I simulated swimlanes using prefixes (e.g., `User_`, `System_`) to indicate responsibility. Activity diagrams allowed me to model process flows like “Process Payment” or “Generate Sales Report,” including decision points, parallel actions (via `fork`/`join`), and user feedback loops.
+Activity diagrams, on the other hand, were better suited for capturing complete workflows that involve both users and the system. Diagrams like “Make Purchase” or “Sync Data with Cloud” showed the sequence of actions, decisions, and even parallel flows between actors.
 
-In short:
-- **State diagrams** (via `stateDiagram-v2`) helped capture how an object evolves.
-- **Activity diagrams** (also using `stateDiagram-v2`) helped describe full business workflows.
+Although Mermaid doesn’t natively support full UML activity diagram syntax, I used `stateDiagram-v2` to implement both types. It allowed me to include start/end nodes, guards, decisions, and parallel actions using `fork` and `join`. For swimlanes, I simulated roles using naming conventions (e.g., `User_`, `System_`) to clarify responsibilities. While not perfect, it offered a consistent and lightweight way to model the logic directly in markdown.
 
-Despite Mermaid’s limitations, using `stateDiagram-v2` across both types provided consistency and allowed me to deliver structured, UML-aligned diagrams entirely within markdown.
 
