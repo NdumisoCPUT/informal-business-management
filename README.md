@@ -32,6 +32,7 @@ Done: Fully completed and verified work.
 ## Why These Changes Were Made
 These customizations help the team stay aligned on task status, identify delays early, and ensure we maintain quality before delivery. It also makes our board easier to read and helps visualize the full workflow from idea to deployment.
 
+
 ## System Documentation
 - [System Specification](SPECIFICATION.md)
 - [Architecture & C4 Diagrams](ARCHITECTURE.md)
