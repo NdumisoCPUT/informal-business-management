@@ -1,3 +1,6 @@
+# Activity Diagram
+This provides short explanations for each of the 8 UML activity diagrams, linking them to their functional requirements (A4) and sprint tasks (A6). Each section highlights what the diagram models and why it's relevant to the system's functionality. This supports traceability and fulfills the markdown explanation requirement in the deliverables
+
 ## User Login & Access
 ```mermaid
 stateDiagram-v2
