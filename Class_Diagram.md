@@ -1,3 +1,7 @@
+# Class Diagram
+
+This class diagram illustrates the key entities, their attributes, behaviors, and interrelationships within the SME management application. It reflects system responsibilities across user management, inventory, ordering, payments, messaging, reporting, and settings, as defined throughout the project.
+
 ```mermaid
 classDiagram
     class UserAccount {
