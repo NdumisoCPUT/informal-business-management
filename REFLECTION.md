@@ -48,5 +48,32 @@ Trello shines in ease of use and intuitive UI, making it ideal for non-technical
 | Automation          | GitHub Actions and bots (not intuitive)  | Butler (limited but simple)          | Built-in advanced rules/triggers    |
 | Team Assignment     | Uses @mentions and assignees             | Labels and checklists                | Role assignments, priorities        |
 
+# Reflection on Domain and Class Design Process
+Designing the domain model and class diagram for the informal business management system came with several challenges and learning moments. This reflection explains the main problems faced, how our class diagram fits with earlier work, the decisions we had to make along the way, and what we learned about object-oriented design.
+
+## Challenges Faced
+One of the hardest parts was choosing the right level of detail for each class. At first, we were unsure whether things like SalesReport or PromotionalMessage should be full classes or just part of another class. We had to balance between including enough information and keeping the diagram simple to understand.
+
+It was also difficult to show the correct relationships between classes. For example, how should a UserAccount be linked to Orders or CashFlowEntry? Can one user have many orders? Can one order have more than one payment? We had to look back at real-life examples to make sure the links made sense and were not confusing.
+
+Another challenge was deciding which methods (functions) to add to each class. Some were easy to choose, like checkAvailability() in InventoryItem or calculateTotal() in Order. But others, like generate() in SalesReport, were harder to place. We weren’t sure if they belonged in the class or in a service layer. In the end, we focused on methods that matched the main job (responsibility) of each class.
+
+## Alignment with Previous Assignments
+Our class diagram connects well with our earlier work. Each class links to a functional requirement from Assignment 4 or a user story from Assignment 6. For example, the InventoryItem class matches FR-002 (“Track inventory levels”) and shows how stock changes over time, which we had already shown in a state diagram in Assignment 8.
+
+We also linked class methods to steps in our activity diagrams from Assignment 9. For example, the submit() and cancel() methods in the Order class come directly from the actions shown in the purchase workflow. This made our diagram feel like the final piece that ties everything together into one complete system view.
+
+## Trade-offs Made
+We made a few trade-offs to keep the model clear. First, we chose composition over inheritance. This means we didn’t create a lot of abstract or parent classes to share code. Instead, we kept each class simple and focused on its own job. For example, SalesReport and CashFlowEntry could have shared a base class for financial data, but we kept them separate to avoid confusion.
+
+Another trade-off was keeping things simple. In real life, the Payment process might include many steps, like working with payment providers. But we made it simpler by focusing only on key parts—amount, method, and status—so we could focus on what’s most important for the system.
+
+## Lessons Learned
+This project helped us understand object-oriented design better. We learned to think of everything as objects with specific roles and behaviors. Instead of writing all logic in one place, we learned to divide work between classes based on their purpose.
+
+We also learned the value of reviewing and improving the design. Our first version had too much or too little detail. But by checking it against our requirements and diagrams, we were able to improve it.
+
+Lastly, we now understand how different UML diagrams work together. State and activity diagrams show what happens over time, while the class diagram shows how everything is structured. Together, they give a full picture of the system.
+
 
 
