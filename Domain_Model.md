@@ -1,6 +1,6 @@
 # Domain Model 
 
-This domain model captures the core entities, their attributes, methods, and relationships based on the system functionality established across Assignments 4, 6, and 8.
+This domain model outlines the key entities, their attributes, methods, and relationships that define the core logic and structure of the system, based on functionality implemented throughout the development lifecycle.
 
 | **Entity**        | **Attributes**                                     | **Methods**                                | **Relationships**                                      |
 |-------------------|----------------------------------------------------|---------------------------------------------|---------------------------------------------------------|
