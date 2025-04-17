@@ -48,7 +48,7 @@ These customizations help the team stay aligned on task status, identify delays 
 -  [Activity_diagrams](Activity_diagrams.md)
 - [State_Transition_Diagrams](State_Transition_Diagrams.md)
 - [uml_modeling_reflection.md](uml_modeling_reflection.md)
-- [Class Implementation](#class-implementation-task-1)
+- [Class Implementation](class-implementation-task-1)
 
 
 
