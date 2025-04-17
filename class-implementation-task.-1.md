@@ -8,9 +8,9 @@ This implementation uses **Python** as the preferred programming language becaus
 ## Class Structure
 
 All classes from the UML diagram have been implemented under the `/src` directory:
-- `UserAccount`, `Order`, `InventoryItem`
-- `Payment`, `SalesReport`, `CashFlowEntry`
-- `SystemSettings`, `PromotionalMessage`
+- UserAccount, Order, InventoryItem
+- Payment, SalesReport, CashFlowEntry
+- SystemSettings, PromotionalMessage
 
 ## Design Decisions
 
