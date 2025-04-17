@@ -1,6 +1,6 @@
 # Creational Patterns (Task 2)
 
-This section documents the implementation of all six creational design patterns as required for Assignment 10.
+This section documents the implementation of all six creational design patterns as required for this project.
 
 ## Directory
 
