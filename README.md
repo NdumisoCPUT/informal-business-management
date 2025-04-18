@@ -49,7 +49,7 @@ These customizations help the team stay aligned on task status, identify delays 
 - [State_Transition_Diagrams](State_Transition_Diagrams.md)
 - [uml_modeling_reflection.md](uml_modeling_reflection.md)
 - [Class Implementation](class-implementation-task.-1.md)
-- [CHANGELOG](changelog.md)
+- [CHANGELOG](CHANGELOG.md)
    
 
 
