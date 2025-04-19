@@ -6,7 +6,7 @@ class Order:
         self.__status = status
         self.__date_created = date_created
         self.__total_amount = total_amount
-        self.items = []  # list of InventoryItem instances
+        self.items = []  
 
     def submit(self):
         self.__status = "Submitted"

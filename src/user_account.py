@@ -7,15 +7,15 @@ class UserAccount:
         self.__role = role
 
     def login(self):
-        # Placeholder login logic
+       
         print(f"User {self.__email} attempting login...")
 
     def logout(self):
-        # Placeholder logout logic
+        
         print(f"User {self.__email} logged out.")
 
     def update_profile(self, new_name=None, new_email=None):
-        # Allows user to update name or email
+       
         if new_name:
             self.__name = new_name
         if new_email:

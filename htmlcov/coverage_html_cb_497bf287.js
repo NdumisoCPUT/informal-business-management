@@ -7,7 +7,7 @@
 
 coverage = {};
 
-// General helpers
+
 function debounce(callback, wait) {
     let timeoutId = null;
     return function(...args) {
@@ -32,9 +32,9 @@ function on_click(sel, fn) {
     }
 }
 
-// Helpers for table sorting
+
 function getCellValue(row, column = 0) {
-    const cell = row.cells[column]  // nosemgrep: eslint.detect-object-injection
+    const cell = row.cells[column]  
     if (cell.childElementCount == 1) {
         var child = cell.firstElementChild;
         if (child.tagName === "A") {
@@ -57,8 +57,7 @@ function rowComparator(rowA, rowB, column = 0) {
 }
 
 function sortColumn(th) {
-    // Get the current sorting direction of the selected header,
-    // clear state on other headers and then set the new sorting direction.
+    
     const currentSortOrder = th.getAttribute("aria-sort");
     [...th.parentElement.cells].forEach(header => header.setAttribute("aria-sort", "none"));
     var direction;
@@ -75,14 +74,14 @@ function sortColumn(th) {
 
     const column = [...th.parentElement.cells].indexOf(th)
 
-    // Sort all rows and afterwards append them in order to move them in the DOM.
+   
     Array.from(th.closest("table").querySelectorAll("tbody tr"))
         .sort((rowA, rowB) => rowComparator(rowA, rowB, column) * (direction === "ascending" ? 1 : -1))
         .forEach(tr => tr.parentElement.appendChild(tr));
 
-    // Save the sort order for next time.
+   
     if (th.id !== "region") {
-        let th_id = "file";  // Sort by file if we don't have a column id
+        let th_id = "file";  
         let current_direction = direction;
         const stored_list = localStorage.getItem(coverage.INDEX_SORT_STORAGE);
         if (stored_list) {
@@ -93,7 +92,7 @@ function sortColumn(th) {
             "direction": current_direction
         }));
         if (th.id !== th_id || document.getElementById("region")) {
-            // Sort column has changed, unset sorting by function or class.
+          
             localStorage.setItem(coverage.SORTED_BY_REGION, JSON.stringify({
                 "by_region": false,
                 "region_direction": current_direction
@@ -101,7 +100,7 @@ function sortColumn(th) {
         }
     }
     else {
-        // Sort column has changed to by function or class, remember that.
+        
         localStorage.setItem(coverage.SORTED_BY_REGION, JSON.stringify({
             "by_region": true,
             "region_direction": direction
@@ -109,12 +108,12 @@ function sortColumn(th) {
     }
 }
 
-// Find all the elements with data-shortcut attribute, and use them to assign a shortcut key.
+
 coverage.assign_shortkeys = function () {
     document.querySelectorAll("[data-shortcut]").forEach(element => {
         document.addEventListener("keypress", event => {
             if (event.target.tagName.toLowerCase() === "input") {
-                return; // ignore keypress from search filter
+                return; 
             }
             if (event.key === element.dataset.shortcut) {
                 element.click();
@@ -123,9 +122,9 @@ coverage.assign_shortkeys = function () {
     });
 };
 
-// Create the events for the filter box.
+
 coverage.wire_up_filter = function () {
-    // Populate the filter and hide100 inputs if there are saved values for them.
+    
     const saved_filter_value = localStorage.getItem(coverage.FILTER_STORAGE);
     if (saved_filter_value) {
         document.getElementById("filter").value = saved_filter_value;
@@ -135,30 +134,30 @@ coverage.wire_up_filter = function () {
         document.getElementById("hide100").checked = JSON.parse(saved_hide100_value);
     }
 
-    // Cache elements.
+    
     const table = document.querySelector("table.index");
     const table_body_rows = table.querySelectorAll("tbody tr");
     const no_rows = document.getElementById("no_rows");
 
-    // Observe filter keyevents.
+    
     const filter_handler = (event => {
-        // Keep running total of each metric, first index contains number of shown rows
+        
         const totals = new Array(table.rows[0].cells.length).fill(0);
-        // Accumulate the percentage as fraction
-        totals[totals.length - 1] = { "numer": 0, "denom": 0 };  // nosemgrep: eslint.detect-object-injection
+       
+        totals[totals.length - 1] = { "numer": 0, "denom": 0 };  
 
         var text = document.getElementById("filter").value;
-        // Store filter value
+      
         localStorage.setItem(coverage.FILTER_STORAGE, text);
         const casefold = (text === text.toLowerCase());
         const hide100 = document.getElementById("hide100").checked;
-        // Store hide value.
+       
         localStorage.setItem(coverage.HIDE100_STORAGE, JSON.stringify(hide100));
 
-        // Hide / show elements.
+      
         table_body_rows.forEach(row => {
             var show = false;
-            // Check the text filter.
+            
             for (let column = 0; column < totals.length; column++) {
                 cell = row.cells[column];
                 if (cell.classList.contains("name")) {
@@ -172,57 +171,57 @@ coverage.wire_up_filter = function () {
                 }
             }
 
-            // Check the "hide covered" filter.
+           
             if (show && hide100) {
                 const [numer, denom] = row.cells[row.cells.length - 1].dataset.ratio.split(" ");
                 show = (numer !== denom);
             }
 
             if (!show) {
-                // hide
+              
                 row.classList.add("hidden");
                 return;
             }
 
-            // show
+          
             row.classList.remove("hidden");
             totals[0]++;
 
             for (let column = 0; column < totals.length; column++) {
-                // Accumulate dynamic totals
-                cell = row.cells[column]  // nosemgrep: eslint.detect-object-injection
+                
+                cell = row.cells[column]  
                 if (cell.classList.contains("name")) {
                     continue;
                 }
                 if (column === totals.length - 1) {
-                    // Last column contains percentage
+                    
                     const [numer, denom] = cell.dataset.ratio.split(" ");
-                    totals[column]["numer"] += parseInt(numer, 10);  // nosemgrep: eslint.detect-object-injection
-                    totals[column]["denom"] += parseInt(denom, 10);  // nosemgrep: eslint.detect-object-injection
+                    totals[column]["numer"] += parseInt(numer, 10);  
+                    totals[column]["denom"] += parseInt(denom, 10);  
                 }
                 else {
-                    totals[column] += parseInt(cell.textContent, 10);  // nosemgrep: eslint.detect-object-injection
+                    totals[column] += parseInt(cell.textContent, 10);  
                 }
             }
         });
 
-        // Show placeholder if no rows will be displayed.
+   
         if (!totals[0]) {
-            // Show placeholder, hide table.
+           
             no_rows.style.display = "block";
             table.style.display = "none";
             return;
         }
 
-        // Hide placeholder, show table.
+        
         no_rows.style.display = null;
         table.style.display = null;
 
         const footer = table.tFoot.rows[0];
-        // Calculate new dynamic sum values based on visible rows.
+        
         for (let column = 0; column < totals.length; column++) {
-            // Get footer cell element.
-            const cell = footer.cells[column];  // nosemgrep: eslint.detect-object-injection
+            
+            const cell = footer.cells[column];  
             if (cell.classList.contains("name")) {
                 continue;
             }

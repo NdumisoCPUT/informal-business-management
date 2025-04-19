@@ -7,9 +7,9 @@ class InventoryItem:
         self.__restock_threshold = restock_threshold
 
     def update_stock(self, quantity):
-        # Adjusts the stock level by adding or removing quantity
+       
         self.__quantity += quantity
 
     def check_availability(self):
-        # Returns True if item is available (quantity > 0)
+       
         return self.__quantity > 0
