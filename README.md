@@ -32,6 +32,13 @@ Done: Fully completed and verified work.
 ## Why These Changes Were Made
 These customizations help the team stay aligned on task status, identify delays early, and ensure we maintain quality before delivery. It also makes our board easier to read and helps visualize the full workflow from idea to deployment.
 
+## Repository Justification
+
+A generic `Repository<T, ID>` interface was used to avoid duplication across different entity repositories.
+
+This approach allows defining standard CRUD operations once and reusing them across multiple entities like `InventoryItem`, `Order`, etc.  
+It follows the **DRY (Don't Repeat Yourself)** principle, reduces code duplication, and ensures consistency across the repository layer.
+
 
 ## System Documentation
 - [System Specification](SPECIFICATION.md)
