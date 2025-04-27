@@ -57,6 +57,7 @@ It follows the **DRY (Don't Repeat Yourself)** principle, reduces code duplicati
 - [uml_modeling_reflection.md](uml_modeling_reflection.md)
 - [Class Implementation](class-implementation-task.-1.md)
 - [CHANGELOG](CHANGELOG.md)
+- [Factory_vs_DI](Factory_vs_DI.md)
    
 
 
