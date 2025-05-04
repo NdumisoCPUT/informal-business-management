@@ -44,25 +44,25 @@ def to_schema(order: Order) -> OrderResponse:
         ],
     )
 
-@router.post("/", response_model=OrderResponse)
+@router.post("/", response_model=OrderResponse, tags=["Orders"])
 def create_order(req: OrderRequest):
     order = Order(order_id=req.order_id, status=req.status, date=req.date)
     for item in req.items:
         order.add_item(item)
     return to_schema(service.create_order(order))
 
-@router.get("/{order_id}", response_model=OrderResponse)
+@router.get("/{order_id}", response_model=OrderResponse, tags=["Orders"])
 def get_order(order_id: str):
     order = service.get_order(order_id)
     if not order:
         raise HTTPException(status_code=404, detail="Order not found")
     return to_schema(order)
 
-@router.get("/", response_model=List[OrderResponse])
+@router.get("/", response_model=List[OrderResponse], tags=["Orders"])
 def list_orders():
     return [to_schema(order) for order in service.list_orders()]
 
-@router.delete("/{order_id}")
+@router.delete("/{order_id}", tags=["Orders"])
 def delete_order(order_id: str):
     order = service.get_order(order_id)
     if not order:

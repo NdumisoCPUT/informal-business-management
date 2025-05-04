@@ -36,12 +36,12 @@ def convert_to_schema(entry: CashFlowEntry) -> CashFlowEntrySchema:
         date=entry.get_date(),
     )
 
-@router.get("/", response_model=List[CashFlowEntrySchema])
+@router.get("/", response_model=List[CashFlowEntrySchema], tags=["Cash Flow"])
 def fetch_all():
     entries = service.list_entries()
     return [convert_to_schema(e) for e in entries]
 
-@router.post("/", response_model=CashFlowEntrySchema)
+@router.post("/", response_model=CashFlowEntrySchema, tags=["Cash Flow"])
 def create_entry(entry: CashFlowEntrySchema):
     try:
         entry_obj = CashFlowEntry(
@@ -56,7 +56,7 @@ def create_entry(entry: CashFlowEntrySchema):
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
 
-@router.put("/{entry_id}", response_model=CashFlowEntrySchema)
+@router.put("/{entry_id}", response_model=CashFlowEntrySchema, tags=["Cash Flow"])
 def update_entry(entry_id: str, updated: CashFlowEntrySchema):
     updated_obj = CashFlowEntry(
         entry_id=updated.entry_id,
@@ -70,7 +70,7 @@ def update_entry(entry_id: str, updated: CashFlowEntrySchema):
         raise HTTPException(status_code=404, detail="Entry not found.")
     return convert_to_schema(entry)
 
-@router.patch("/{entry_id}", response_model=CashFlowEntrySchema)
+@router.patch("/{entry_id}", response_model=CashFlowEntrySchema, tags=["Cash Flow"])
 def partial_update_entry(entry_id: str, updates: CashFlowEntryUpdateSchema):
     entry = service.get_entry(entry_id)
     if not entry:
@@ -88,7 +88,7 @@ def partial_update_entry(entry_id: str, updates: CashFlowEntryUpdateSchema):
 
     return convert_to_schema(entry)
 
-@router.post("/{entry_id}/archive", response_model=CashFlowEntrySchema)
+@router.post("/{entry_id}/archive", response_model=CashFlowEntrySchema, tags=["Cash Flow"])
 def archive_entry(entry_id: str):
     entry = service.archive_entry(entry_id)
     if not entry:

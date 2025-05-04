@@ -1,30 +1,32 @@
+# api/inventory_item.py
+
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from typing import List, Optional
-from datetime import datetime
 
 from src.inventory_item import InventoryItem
 from services.inventory_item_service import InventoryItemService
 from repositories.inmemory.inventory_item_repository import InMemoryInventoryItemRepository
 
+router = APIRouter(prefix="/api/inventory", tags=["Inventory"])
 
+# Schemas
 class InventoryItemSchema(BaseModel):
     item_id: str
     name: str
     quantity: int
     price: float
-    status: str  
-
+    status: str
 
 class InventoryUpdateSchema(BaseModel):
     quantity: Optional[int] = None
     status: Optional[str] = None
 
+# Initialize service
 repo = InMemoryInventoryItemRepository()
 service = InventoryItemService(repo)
 
-router = APIRouter(prefix="/api/inventory", tags=["Inventory"])
-
+# Helper function
 def to_schema(item: InventoryItem) -> InventoryItemSchema:
     return InventoryItemSchema(
         item_id=item.get_item_id(),
@@ -34,6 +36,7 @@ def to_schema(item: InventoryItem) -> InventoryItemSchema:
         status=item.get_status(),
     )
 
+# Routes
 @router.get("/", response_model=List[InventoryItemSchema])
 def list_items():
     return [to_schema(i) for i in service.list_items()]
