@@ -1,5 +1,3 @@
-# repositories/inmemory/cash_flow_entry_repository.py
-
 from src.cash_flow_entry import CashFlowEntry
 
 class InMemoryCashFlowEntryRepository:

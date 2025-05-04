@@ -1,27 +1,31 @@
-from src.inventory_item import InventoryItem  # assuming structure for relationships
-
 class Order:
-    def __init__(self, order_id, status, date_created, total_amount):
-        self.__order_id = order_id
-        self.__status = status
-        self.__date_created = date_created
-        self.__total_amount = total_amount
-        self.items = []  
+    def __init__(self, order_id, status, date, total_amount=0.0):
+        self.order_id = order_id
+        self.status = status
+        self.date = date
+        self.total_amount = total_amount
+        self.items = []
 
-    def submit(self):
-        self.__status = "Submitted"
-        print(f"Order {self.__order_id} submitted.")
+    def get_order_id(self):
+        return self.order_id
 
-    def cancel(self):
-        self.__status = "Canceled"
-        print(f"Order {self.__order_id} canceled.")
+    def get_status(self):
+        return self.status
 
-    def calculate_total(self):
-        self.__total_amount = sum(item._InventoryItem__price for item in self.items)
-        return self.__total_amount
+    def set_status(self, status):
+        self.status = status
 
     def add_item(self, item):
-        if isinstance(item, InventoryItem):
-            self.items.append(item)
-        else:
-            raise TypeError("Only InventoryItem objects can be added.")
+        self.items.append(item)
+
+    def calculate_total(self):
+        self.total_amount = sum(item.price * item.quantity for item in self.items)
+        return self.total_amount
+
+    def get_items(self):
+        return self.items
+
+    def get_total_amount(self):
+        return self.total_amount
+
+

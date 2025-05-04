@@ -1,23 +1,17 @@
-
+# repositories/inmemory/payment_repository.py
 
 from src.payment import Payment
 
 class InMemoryPaymentRepository:
     def __init__(self):
-        self.payments = {}
+        self._payments = {}
 
-    def add(self, payment):
-        if isinstance(payment, Payment):
-            self.payments[payment.get_payment_id()] = payment
-        else:
-            raise TypeError("Only Payment objects can be added.")
-
-    def get(self, payment_id):
-        return self.payments.get(payment_id)
-
-    def remove(self, payment_id):
-        if payment_id in self.payments:
-            del self.payments[payment_id]
+    def add(self, payment: Payment):
+        self._payments[payment.get_payment_id()] = payment
 
     def list_all(self):
-        return list(self.payments.values())
+        return list(self._payments.values())
+
+    def find_by_id(self, payment_id: str):
+        return self._payments.get(payment_id, None)
+

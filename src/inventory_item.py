@@ -1,34 +1,29 @@
 class InventoryItem:
-    def __init__(self, item_id, name, quantity, price, restock_threshold):
+    def __init__(self, item_id, name, quantity, price, status):
         self.__item_id = item_id
         self.__name = name
         self.__quantity = quantity
         self.__price = price
-        self.__restock_threshold = restock_threshold
+        self.__status = status
 
-    @property
-    def id(self):
+    def get_item_id(self):
         return self.__item_id
 
-    @property
-    def name(self):
+    def get_name(self):
         return self.__name
 
-    @property
-    def quantity(self):
+    def get_quantity(self):
         return self.__quantity
 
-    @property
-    def price(self):
+    def get_price(self):
         return self.__price
 
-    @property
-    def restock_threshold(self):
-        return self.__restock_threshold
+    def get_status(self):
+        return self.__status
 
-    def update_stock(self, quantity):
-        self.__quantity += quantity
+    def set_quantity(self, quantity):
+        self.__quantity = quantity
 
-    def check_availability(self):
-        return self.__quantity > 0
+    def set_status(self, status):
+        self.__status = status
 
