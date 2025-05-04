@@ -43,3 +43,21 @@
 - Moved all completed items to the "Done" column
 - Created issues for testing-related improvements
 - Linked commits to issues using `Fix #` references
+
+# Changelog for API Features and Fixes
+
+### Added
+- Cash Flow API with create, update, partial update, list, and archive endpoints.
+- Inventory API with endpoints to create, list, update, restock, and mark items as out of stock.
+- Payment API with create, get, and list endpoints, including internal payment processing logic.
+- Order API with endpoints to create, retrieve, delete, and list orders, supporting item totals.
+
+### Fixed
+- Added missing `find_by_id` methods to support retrieval logic in in-memory repositories.
+- Corrected Swagger UI tags to ensure proper grouping and navigation.
+- Resolved schema mismatches in API response models for order and payment endpoints.
+
+### Documentation
+- Enabled full Swagger UI via `/docs` with complete schema definitions.
+- Provided descriptive endpoint tagging and HTTP error handling for clarity.
+
