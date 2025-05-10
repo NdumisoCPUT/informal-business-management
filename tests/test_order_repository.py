@@ -1,44 +1,37 @@
-# tests/test_order_repository.py
-
-import sys
-import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../')))
-
 import unittest
-from repositories.inmemory.order_repository import InMemoryOrderRepository
 from src.order import Order
-from src.inventory_item import InventoryItem
+from repositories.inmemory.order_repository import InMemoryOrderRepository
 
 class TestInMemoryOrderRepository(unittest.TestCase):
 
-    def setUp(self):
-        self.repo = InMemoryOrderRepository()
-        self.order = Order(order_id=1, status="Pending", date_created="2024-04-26", total_amount=0)
-        self.item = InventoryItem(
-            item_id=101,
-            name="Laptop",
-            price=15000,
-            quantity=5,
-            restock_threshold=2
-        )
-        self.order.add_item(self.item)
-
     def test_add_and_get_order(self):
-        self.repo.add(self.order)
-        retrieved_order = self.repo.get(1)
-        self.assertIsNotNone(retrieved_order)
-        self.assertEqual(retrieved_order._Order__order_id, 1)
+        repo = InMemoryOrderRepository()
+        order = Order("ORD001", "Pending", "2024-01-01", 0.0)
+        repo.add_order(order)
 
-    def test_remove_order(self):
-        self.repo.add(self.order)
-        self.repo.remove(1)
-        self.assertIsNone(self.repo.get(1))
+        fetched = repo.get_order("ORD001")
+        self.assertIsNotNone(fetched)
+        self.assertEqual(fetched.get_order_id(), "ORD001")
+        self.assertEqual(fetched.get_status(), "Pending")
 
     def test_list_all_orders(self):
-        self.repo.add(self.order)
-        orders = self.repo.list_all()
-        self.assertEqual(len(orders), 1)
-        self.assertEqual(orders[0]._Order__order_id, 1)
+        repo = InMemoryOrderRepository()
+        order1 = Order("ORD001", "Pending", "2024-01-01")
+        order2 = Order("ORD002", "Completed", "2024-01-02")
+        repo.add_order(order1)
+        repo.add_order(order2)
 
-if __name__ == "__main__":
+        all_orders = repo.list_orders()
+        self.assertEqual(len(all_orders), 2)
+        self.assertIn(order1, all_orders)
+        self.assertIn(order2, all_orders)
+
+    def test_remove_order(self):
+        repo = InMemoryOrderRepository()
+        order = Order("ORD001", "Pending", "2024-01-01")
+        repo.add_order(order)
+        repo.remove_order("ORD001")
+        self.assertIsNone(repo.get_order("ORD001"))
+
+if __name__ == '__main__':
     unittest.main()

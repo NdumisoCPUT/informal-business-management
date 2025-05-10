@@ -27,3 +27,11 @@ class InventoryItem:
     def set_status(self, status):
         self.__status = status
 
+    def update_details(self, name=None, price=None):
+        if name is not None:
+            self.__name = name
+        if price is not None:
+            self.__price = price
+
+    def __repr__(self):
+        return f"InventoryItem({self.__item_id}, {self.__name}, Qty: {self.__quantity}, Price: {self.__price}, Status: {self.__status})"
