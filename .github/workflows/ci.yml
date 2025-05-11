@@ -1,14 +1,57 @@
 name: CI Pipeline
-
 on:
   push:
-    branches: [main]
+    branches: ['**']
   pull_request:
-    branches: [main]
+    branches: ['**']
+
 
 jobs:
   test:
     name: Run Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Verify files
+        run: |
+          pwd
+          ls -la
+
+
+      - name: Show current directory and list files
+        run: |
+          pwd
+          ls -la
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        working-directory: ${{ github.workspace }}
+        run: |
+          python -m pip install --upgrade pip
+      - name: Install dependencies
+        run: |
+          ls -la  # 🔍 Debug: Show current files
+          cat requirements.txt  # 🔍 Debug: Confirm it's visible
+          pip install -r requirements.txt
+          pip install pytest
+
+      - name: Run unittests
+        run: |
+          python -m unittest discover
+
+
+
+
+
+  release:
+    name: Build Python Package Artifact
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     runs-on: ubuntu-latest
 
     steps:
@@ -20,29 +63,16 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Install dependencies
+      - name: Install packaging tools
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          python -m pip install --upgrade pip setuptools wheel
 
-      - name: Run tests
+      - name: Build package
         run: |
-          pytest
-
-  release:
-    name: Build Release Artifact
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Zip source code
-        run: zip -r informal-business-release.zip .
+          python setup.py sdist bdist_wheel
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: release-artifact
-          path: informal-business-release.zip
+          name: python-package
+          path: dist/*
