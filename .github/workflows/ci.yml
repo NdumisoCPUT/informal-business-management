@@ -2,9 +2,12 @@ name: CI Pipeline
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+      - ndumiso-cput-fix-domain-tests
   pull_request:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
   test:
@@ -14,6 +17,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: List project files (debug)
+        run: ls -R
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -26,8 +32,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run tests
-        run: |
-          pytest
+        run: pytest
 
   release:
     name: Build Release Artifact
