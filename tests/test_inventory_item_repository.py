@@ -21,12 +21,12 @@ class TestInventoryItemRepository(unittest.TestCase):
         self.repo.save(self.item)
         found_item = self.repo.find_by_id("item-001")
         self.assertIsNotNone(found_item)
-        self.assertEqual(found_item.name, "Sunlight Soap")
-        self.assertEqual(found_item.quantity, 50)
+        self.assertEqual(found_item.get_name(), "Sunlight Soap")
+        self.assertEqual(found_item.get_quantity(), 50)
 
-    def test_find_all(self):
+    def test_list_all(self):
         self.repo.save(self.item)
-        all_items = self.repo.find_all()
+        all_items = self.repo.list_all()
         self.assertEqual(len(all_items), 1)
 
     def test_delete(self):
