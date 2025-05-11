@@ -8,6 +8,9 @@ class InMemoryInventoryItemRepository:
         self._storage[item.get_item_id()] = item
         return item
 
+    def save(self, item: InventoryItem):  # <--- Added this method for tests
+        return self.add(item)
+
     def find_by_id(self, item_id: str):
         return self._storage.get(item_id)
 
