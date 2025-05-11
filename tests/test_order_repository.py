@@ -7,9 +7,9 @@ class TestInMemoryOrderRepository(unittest.TestCase):
     def test_add_and_get_order(self):
         repo = InMemoryOrderRepository()
         order = Order("ORD001", "Pending", "2024-01-01", 0.0)
-        repo.add_order(order)
+        repo.save(order)
 
-        fetched = repo.get_order("ORD001")
+        fetched = repo.find_by_id("ORD001")
         self.assertIsNotNone(fetched)
         self.assertEqual(fetched.get_order_id(), "ORD001")
         self.assertEqual(fetched.get_status(), "Pending")
@@ -18,10 +18,10 @@ class TestInMemoryOrderRepository(unittest.TestCase):
         repo = InMemoryOrderRepository()
         order1 = Order("ORD001", "Pending", "2024-01-01")
         order2 = Order("ORD002", "Completed", "2024-01-02")
-        repo.add_order(order1)
-        repo.add_order(order2)
+        repo.save(order1)
+        repo.save(order2)
 
-        all_orders = repo.list_orders()
+        all_orders = repo.list_all()
         self.assertEqual(len(all_orders), 2)
         self.assertIn(order1, all_orders)
         self.assertIn(order2, all_orders)
@@ -29,9 +29,9 @@ class TestInMemoryOrderRepository(unittest.TestCase):
     def test_remove_order(self):
         repo = InMemoryOrderRepository()
         order = Order("ORD001", "Pending", "2024-01-01")
-        repo.add_order(order)
-        repo.remove_order("ORD001")
-        self.assertIsNone(repo.get_order("ORD001"))
+        repo.save(order)
+        repo.delete("ORD001")
+        self.assertIsNone(repo.find_by_id("ORD001"))
 
 if __name__ == '__main__':
     unittest.main()
