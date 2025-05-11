@@ -10,7 +10,7 @@ class TestUserAccountService(unittest.TestCase):
         self.service = UserAccountService(self.repo)
 
     def test_create_and_find_user(self):
-        user = UserAccount("U001", "Alice", "alice@example.com")
+        user = UserAccount("U001", "Alice", "alice@example.com", "pass123", "admin")
         self.service.create_user(user)
 
         found_user = self.service.find_user("U001")
@@ -19,13 +19,16 @@ class TestUserAccountService(unittest.TestCase):
         self.assertEqual(found_user.get_name(), "Alice")
 
     def test_update_profile(self):
-        user = UserAccount("U002", "Bob", "bob@example.com")
+        user = UserAccount("U002", "Bob", "bob@example.com", "pass456", "customer")
         self.service.create_user(user)
 
         # Simulate profile update
-        user.set_name("Bobby")
-        user.set_email("bobby@example.com")
+        user.update_profile(new_name="Bobby", new_email="bobby@example.com")
         self.service.update_profile(user)
 
         updated_user = self.service.find_user("U002")
-        self.assertEqual
+        self.assertEqual(updated_user.get_name(), "Bobby")
+        self.assertEqual(updated_user.get_email(), "bobby@example.com")
+
+if __name__ == '__main__':
+    unittest.main()

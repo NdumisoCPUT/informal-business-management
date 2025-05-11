@@ -19,7 +19,7 @@ class Order:
         self.items.append(item)
 
     def calculate_total(self):
-        self.total_amount = sum(item.price * item.quantity for item in self.items)
+        self.total_amount = sum(item.get_price() * item.get_quantity() for item in self.items)
         return self.total_amount
 
     def get_items(self):
@@ -27,5 +27,3 @@ class Order:
 
     def get_total_amount(self):
         return self.total_amount
-
-
