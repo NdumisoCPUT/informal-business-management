@@ -1,22 +1,18 @@
-# services/order_service.py
-
 from src.order import Order
-from repositories.inmemory.order_repository import InMemoryOrderRepository
 
-class OrderService:
-    def __init__(self, repository: InMemoryOrderRepository):
-        self.repository = repository
+class InMemoryOrderRepository:
+    def __init__(self):
+        self._storage = {}
 
-    def create_order(self, order: Order):
-        order.calculate_total()
-        self.repository.save(order)
+    def save(self, order: Order):
+        self._storage[order.get_order_id()] = order
         return order
 
-    def get_order(self, order_id: str):
-        return self.repository.find_by_id(order_id)
+    def find_by_id(self, order_id: str):
+        return self._storage.get(order_id)
 
-    def list_orders(self):
-        return self.repository.list_all()
+    def list_all(self):
+        return list(self._storage.values())
 
-    def delete_order(self, order_id: str):
-        self.repository.delete(order_id)
+    def delete(self, order_id: str):
+        return self._storage.pop(order_id, None)
