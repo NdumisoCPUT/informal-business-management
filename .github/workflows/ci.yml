@@ -2,9 +2,13 @@ name: CI Pipeline
 
 on:
   push:
-    branches: [main]
+    branches: 
+      - main
+      - ndumiso-cput-fix-domain-tests
   pull_request:
-    branches: [main]
+    branches:
+      - main
+      - ndumiso-cput-fix-domain-tests
 
 jobs:
   test:
@@ -14,6 +18,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: Show current directory and list files
+        run: |
+          pwd
+          ls -la
 
       - name: Set up Python
         uses: actions/setup-python@v4
