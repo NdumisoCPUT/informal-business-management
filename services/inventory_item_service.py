@@ -6,10 +6,13 @@ class InventoryItemService:
         self.repository = repository
 
     def add_item(self, item: InventoryItem):
-        return self.repository.add(item)  # Use 'add', not 'save'
+        return self.repository.add(item)
+
+    def get_item(self, item_id: str):
+        return self.repository.find_by_id(item_id)
 
     def list_items(self):
-        return self.repository.list_all()  # Ensure method name matches repository
+        return self.repository.list_all()
 
     def update_item(self, item_id: str, updated_item: InventoryItem):
         return self.repository.update(item_id, updated_item)
@@ -19,3 +22,6 @@ class InventoryItemService:
 
     def mark_out_of_stock(self, item_id: str):
         return self.repository.mark_out_of_stock(item_id)
+
+    def delete_item(self, item_id: str):
+        return self.repository.delete(item_id)
