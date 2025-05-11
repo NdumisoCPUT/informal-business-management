@@ -39,6 +39,7 @@ jobs:
           ls -la  # 🔍 Debug: Show current files
           cat requirements.txt  # 🔍 Debug: Confirm it's visible
           pip install -r requirements.txt
+          pip install pytest
 
       - name: Run unittests
         run: |
