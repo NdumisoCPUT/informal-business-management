@@ -1,44 +1,34 @@
-# src/payment.py
+from datetime import datetime
 
 class Payment:
-    def __init__(self, payment_id, amount, method, status, timestamp):
+    def __init__(self, payment_id: str, amount: float, method: str, status: str, date: datetime):
         self.__payment_id = payment_id
         self.__amount = amount
         self.__method = method
         self.__status = status
-        self.__timestamp = timestamp
+        self.__date = date
 
     def process(self):
-        if self.validate():
+        if self.__amount > 0:
             self.__status = "Completed"
-            print(f"Payment {self.__payment_id} processed successfully.")
         else:
             self.__status = "Failed"
-            print(f"Payment {self.__payment_id} failed to process.")
 
     def retry(self):
-        if self.__status == "Failed":
-            print(f"Retrying payment {self.__payment_id}...")
-            self.process()
-        else:
-            print(f"Payment {self.__payment_id} does not need retrying (status: {self.__status}).")
-
-    def validate(self):
-        if self.__amount > 0 and self.__method in ["Card", "Cash", "EFT", "MobileMoney"]:
-            return True
-        return False
+        self.process()  # Retry means re-processing under updated conditions
 
     def get_payment_id(self):
         return self.__payment_id
 
-    def get_amount(self):
-        return self.__amount
-
     def get_status(self):
         return self.__status
+
+    def get_amount(self):
+        return self.__amount
 
     def get_method(self):
         return self.__method
 
-    def get_timestamp(self):
-        return self.__timestamp
+    def get_date(self):
+        return self.__date
+
