@@ -21,6 +21,11 @@ jobs:
           ls -la
 
 
+      - name: Show current directory and list files
+        run: |
+          pwd
+          ls -la
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
