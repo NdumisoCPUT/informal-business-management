@@ -1,5 +1,3 @@
-# services/payment_service.py
-
 from src.payment import Payment
 from repositories.inmemory.payment_repository import InMemoryPaymentRepository
 
@@ -19,7 +17,21 @@ class PaymentService:
 
     def retry_payment(self, payment_id: str):
         payment = self.repository.find_by_id(payment_id)
-        if payment:
-            payment.retry()
-            return payment
-        return None
+        if not payment:
+            raise ValueError("Payment not found")
+
+        payment.retry()
+        self.repository.save(payment)
+        return payment
+
+    def process_payment(self, payment_id: str):
+        payment = self.repository.find_by_id(payment_id)
+        if not payment:
+            raise ValueError("Payment not found")
+
+        payment.process()
+        self.repository.save(payment)
+        return payment
+
+    def remove_payment(self, payment_id: str):
+        return self.repository.remove(payment_id)
