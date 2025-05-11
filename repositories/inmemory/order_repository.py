@@ -1,18 +1,18 @@
-# repositories/inmemory/order_repository.py
+from src.order import Order
 
 class InMemoryOrderRepository:
     def __init__(self):
-        self.orders = {}
+        self._storage = {}
 
-    def save(self, order):
-        self.orders[order.get_order_id()] = order
+    def save(self, order: Order):
+        self._storage[order.get_order_id()] = order
+        return order
 
-    def find_by_id(self, order_id):
-        return self.orders.get(order_id)
-
-    def delete(self, order_id):
-        if order_id in self.orders:
-            del self.orders[order_id]
+    def find_by_id(self, order_id: str):
+        return self._storage.get(order_id)
 
     def list_all(self):
-        return list(self.orders.values())
+        return list(self._storage.values())
+
+    def delete(self, order_id: str):
+        return self._storage.pop(order_id, None)
