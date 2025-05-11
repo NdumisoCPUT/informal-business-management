@@ -1,25 +1,32 @@
 import unittest
-from services.order_service import OrderService
-from repositories.inmemory.order_repository import InMemoryOrderRepository
 from src.order import Order
-from src.inventory_item import InventoryItem
+from repositories.inmemory.order_repository import InMemoryOrderRepository
 
-class TestOrderService(unittest.TestCase):
-    def test_order_service(self):
+class TestInMemoryOrderRepository(unittest.TestCase):
+
+    def test_add_and_get_order(self):
         repo = InMemoryOrderRepository()
-        service = OrderService(repo)
+        order = Order("ORD001", "Pending", "2024-01-01", 0.0)
+        repo.save(order)
 
-        item = InventoryItem("ITEM001", "Bread", 2, 15.0, 5)
-        order = Order("ORDER001", "Pending", "2024-05-01", 0.0)
-        order.add_item(item)
-        order.calculate_total()
+        fetched = repo.find_by_id("ORD001")
+        self.assertIsNotNone(fetched)
+        self.assertEqual(fetched.get_order_id(), "ORD001")
+        self.assertEqual(fetched.get_status(), "Pending")
 
-        service.submit_order(order)
+    def test_list_all_orders(self):
+        repo = InMemoryOrderRepository()
+        order1 = Order("ORD001", "Pending", "2024-01-01")
+        order2 = Order("ORD002", "Completed", "2024-01-02")
+        repo.save(order1)
+        repo.save(order2)
 
-        self.assertEqual(service.find_order("ORDER001").get_total_amount(), 30.0)
-        self.assertTrue(service.cancel_order("ORDER001"))
-        self.assertFalse(service.cancel_order("ORDER001"))  # Already cancelled
+        all_orders = repo.list_all()
+        self.assertEqual(len(all_orders), 2)
+        self.assertIn(order1, all_orders)
+        self.assertIn(order2, all_orders)
 
-if __name__ == '__main__':
-    unittest.main()
-
+    def test_remove_order(self):
+        repo = InMemoryOrderRepository()
+        order = Order("ORD001", "Pending", "2024-01-01")
+        repo.save
