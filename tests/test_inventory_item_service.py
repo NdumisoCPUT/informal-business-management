@@ -1,7 +1,7 @@
 import unittest
 from services.inventory_item_service import InventoryItemService
 from repositories.inmemory.inventory_item_repository import InMemoryInventoryItemRepository
-from src.inventory_item import InventoryItem  # make sure path is correct
+from src.inventory_item import InventoryItem  
 
 class TestInventoryItemService(unittest.TestCase):
 
@@ -9,8 +9,8 @@ class TestInventoryItemService(unittest.TestCase):
         repo = InMemoryInventoryItemRepository()
         service = InventoryItemService(repo)
 
-        # Corrected: status should be a string
-        item = InventoryItem("ITEM001", "Milk", 10, 25.5, "In Stock")
+       
+        item = InventoryItem("ITEM001", "Milk", 10, 25.5, 5)
 
         service.add_item(item)
         self.assertEqual(service.get_item("ITEM001"), item)
