@@ -1,5 +1,3 @@
-# repositories/inmemory/user_account_repository.py
-
 from src.user_account import UserAccount
 
 class InMemoryUserAccountRepository:
@@ -12,8 +10,14 @@ class InMemoryUserAccountRepository:
         else:
             raise TypeError("Only UserAccount objects can be added.")
 
+    def save(self, user):
+        self.add(user)
+
     def get(self, user_id):
         return self.users.get(user_id)
+
+    def find_by_id(self, user_id):
+        return self.get(user_id)
 
     def remove(self, user_id):
         if user_id in self.users:
@@ -21,3 +25,4 @@ class InMemoryUserAccountRepository:
 
     def list_all(self):
         return list(self.users.values())
+
