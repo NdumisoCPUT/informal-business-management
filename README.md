@@ -39,6 +39,68 @@ A generic `Repository<T, ID>` interface was used to avoid duplication across dif
 This approach allows defining standard CRUD operations once and reusing them across multiple entities like `InventoryItem`, `Order`, etc.  
 It follows the **DRY (Don't Repeat Yourself)** principle, reduces code duplication, and ensures consistency across the repository layer.
 
+## 🚀 Getting Started
+
+This guide will help you set up the project locally for development and testing.
+
+### Prerequisites
+- Python 3.12+
+- Git
+- pip
+
+### Setup Instructions
+
+1. **Clone the repository**
+
+```bash
+git clone https://github.com/YOUR_USERNAME/informal-business-management.git
+cd informal-business-management
+```
+
+2. **Create and activate a virtual environment**
+
+```bash
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+```
+
+3. **Install dependencies**
+
+```bash
+pip install -r requirements.txt
+```
+
+4. **Run the API**
+
+```bash
+uvicorn src.api.main:app --reload
+```
+
+5. **Run tests**
+
+```bash
+pytest
+```
+
+---
+
+## 🌟 Features for Contribution
+
+Here are suggested areas for first-time and advanced contributors:
+
+| Feature | Description | Label |
+|--------|-------------|-------|
+| API Error Handling | Improve exception messages for invalid input | `good-first-issue` |
+| Swagger Enhancements | Add summaries/descriptions to all endpoints | `good-first-issue` |
+| PDF Invoicing | Generate downloadable PDF receipts for orders | `feature-request` |
+| Mobile Payments | Add support for mobile money APIs (e.g. MTN Momo) | `feature-request` |
+| Retry Logic | Enhance PaymentService with retry mechanism | `feature-request` |
+| Localization | Translate Swagger UI into isiXhosa/isiZulu | `feature-request` |
+
+---
+
+Want to contribute something not listed here? Check the [open issues](../../issues) or propose your idea in a new issue!
+
 
 ## System Documentation
 - [System Specification](SPECIFICATION.md)
