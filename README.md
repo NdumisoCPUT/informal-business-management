@@ -64,6 +64,7 @@ It follows the **DRY (Don't Repeat Yourself)** principle, reduces code duplicati
 - [pr-blocked-tests](pr-blocked-tests.md)
 - [release-artifact-screenshot](release-artifact-screenshot.md)
 - [workflows](workflows.md)
+- [Code_of_Conduct](Code_Of_Conduct)
   
 
 
