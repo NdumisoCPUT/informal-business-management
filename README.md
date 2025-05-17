@@ -133,6 +133,10 @@ Want to contribute something not listed here? Check the [open issues](../../issu
 - [Board](Board.md)
 - [Domain Model](Domain_Model.md)
 - [Contribution Guidelines](Contribution.md)
+- [Contribution](Contribution.md)
+- [ROADMAP](Roadmap.md)
+- [Repo_Reflection](Repo_REflectionmd)
+- [Class_Diagram](Class_Diagram.md)
 
 
 
