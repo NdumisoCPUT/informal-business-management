@@ -127,6 +127,13 @@ Want to contribute something not listed here? Check the [open issues](../../issu
 - [release-artifact-screenshot](release-artifact-screenshot.md)
 - [workflows](workflows.md)
 - [Code_of_Conduct](Code_Of_Conduct)
+- [Contribution Guidelines](./Contribution.md)
+- [Improvement Reflection](./IMPROVEMENT_REFLECTION.md)
+- [Kanban Board Overview](./Board.md)
+- [Swagger UI](./Swagger UI.md)
+- [Domain Model](./Domain_Model.md)
+- [Test Summary](./Test_Tests.md)
+
   
 
 
