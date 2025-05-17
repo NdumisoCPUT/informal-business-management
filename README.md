@@ -112,9 +112,9 @@ Want to contribute something not listed here? Check the [open issues](../../issu
 - [Use Case Specifications](Use_Case_Specifications.md)
 - [User Stories](https://github.com/NdumisoCPUT/informal-business-management/wiki)
 - [template-comparison](template-comparison.md)
--  [kanban_explanation](kanban_explanation.md)
--  [traceability_table](traceability_table.md)
--  [Activity_diagrams](Activity_diagrams.md)
+- [kanban_explanation](kanban_explanation.md)
+- [traceability_table](traceability_table.md)
+- [Activity_diagrams](Activity_diagrams.md)
 - [State_Transition_Diagrams](State_Transition_Diagrams.md)
 - [uml_modeling_reflection.md](uml_modeling_reflection.md)
 - [Class Implementation](class-implementation-task.-1.md)
@@ -131,7 +131,8 @@ Want to contribute something not listed here? Check the [open issues](../../issu
 - [Improvement Reflection](IMPROVEMENT_REFLECTION.md)
 - [Test_Tests](Test_Tests.md)
 - [Board](Board.md)
-- 
+- [Domain Model](Domain_Model.md)
+- [Contribution Guidelines](Contribution.md)
 
 
 
